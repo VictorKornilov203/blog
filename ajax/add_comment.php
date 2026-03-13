@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
-    // Сохраняем комментарий
+    
     $stmt = $pdo->prepare("INSERT INTO comments (post_id, user_id, content) VALUES (?, ?, ?)");
     
     if ($stmt->execute([$post_id, $user_id, $content])) {
         $comment_id = $pdo->lastInsertId();
         
-        // Получаем данные нового комментария
+       
         $stmt = $pdo->prepare("
             SELECT c.*, u.username 
             FROM comments c 
