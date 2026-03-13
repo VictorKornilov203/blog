@@ -2,7 +2,7 @@
 require_once '../config/db.php';
 require_once '../includes/functions.php';
 
-// Добавь это временное решение для стилей
+
 echo '<style>
     body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
     .admin-menu { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
