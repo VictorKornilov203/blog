@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     
-    // Валидация
+    
     if (empty($username) || empty($email) || empty($password)) {
         $error = 'Все поля обязательны для заполнения';
     } elseif (strlen($password) < 6) {
@@ -19,14 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $confirm_password) {
         $error = 'Пароли не совпадают';
     } else {
-        // Проверка существования пользователя
+        
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? OR username = ?");
         $stmt->execute([$email, $username]);
         
         if ($stmt->fetch()) {
             $error = 'Пользователь с таким email или именем уже существует';
         } else {
-            // Хеширование пароля и сохранение
+            
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             
