@@ -10,7 +10,7 @@ $error = '';
 $success = '';
 $post_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Получаем данные поста
+
 $stmt = $pdo->prepare("SELECT * FROM posts WHERE id = ?");
 $stmt->execute([$post_id]);
 $post = $stmt->fetch();
@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($title) || empty($content)) {
         $error = 'Заполните все поля';
     } else {
-        $image_path = $post['image']; // оставляем старую картинку по умолчанию
+        $image_path = $post['image']; 
         
-        // Загрузка нового изображения
+      
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $upload_dir = '../uploads/';
             if (!file_exists($upload_dir)) {
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $target_path = $upload_dir . $file_name;
             
             if (move_uploaded_file($_FILES['image']['tmp_name'], $target_path)) {
-                // Удаляем старое изображение, если оно было
+                
                 if ($post['image'] && file_exists('../' . $post['image'])) {
                     unlink('../' . $post['image']);
                 }
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($stmt->execute([$title, $content, $image_path, $post_id])) {
             $success = 'Пост успешно обновлен';
-            // Обновляем данные поста для отображения
+           
             $stmt = $pdo->prepare("SELECT * FROM posts WHERE id = ?");
             $stmt->execute([$post_id]);
             $post = $stmt->fetch();
