@@ -4,7 +4,7 @@ require_once 'includes/functions.php';
 
 $post_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Получаем пост
+
 $stmt = $pdo->prepare("
     SELECT p.*, u.username 
     FROM posts p 
@@ -18,7 +18,7 @@ if (!$post) {
     redirect('index.php');
 }
 
-// Получаем комментарии
+
 $stmt = $pdo->prepare("
     SELECT c.*, u.username 
     FROM comments c 
@@ -52,7 +52,7 @@ include 'includes/header.php';
 <section class="comments-section">
     <h2>Комментарии (<?php echo count($comments); ?>)</h2>
     
-    <!-- Список комментариев -->
+    
     <div id="comments-list">
         <?php foreach ($comments as $comment): ?>
             <div class="comment" id="comment-<?php echo $comment['id']; ?>">
@@ -72,7 +72,7 @@ include 'includes/header.php';
         <?php endforeach; ?>
     </div>
     
-    <!-- Форма добавления комментария -->
+  
     <?php if (isLoggedIn()): ?>
         <form id="comment-form" class="comment-form">
             <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
