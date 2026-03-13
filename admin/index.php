@@ -37,7 +37,7 @@ include 'header.php';
 
 <div class="admin-stats">
     <?php
-    // Статистика
+    
     $postsCount = $pdo->query("SELECT COUNT(*) FROM posts")->fetchColumn();
     $commentsCount = $pdo->query("SELECT COUNT(*) FROM comments")->fetchColumn();
     $usersCount = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
