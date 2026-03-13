@@ -2,7 +2,7 @@
 require_once '../config/db.php';
 require_once '../includes/functions.php';
 
-// Добавь это временное решение для стилей
+
 echo '<style>
     body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
     .admin-menu { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
@@ -23,7 +23,7 @@ if (!isAdmin()) {
     redirect('../login.php');
 }
 
-// Удаление комментария
+
 if (isset($_GET['delete'])) {
     $comment_id = (int)$_GET['delete'];
     $stmt = $pdo->prepare("DELETE FROM comments WHERE id = ?");
@@ -31,7 +31,7 @@ if (isset($_GET['delete'])) {
     redirect('comments.php');
 }
 
-// Получаем все комментарии
+
 $stmt = $pdo->query("
     SELECT c.*, u.username, p.title as post_title 
     FROM comments c 
