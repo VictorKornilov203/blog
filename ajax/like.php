@@ -12,11 +12,11 @@ if (!isLoggedIn()) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comment_id = isset($_POST['comment_id']) ? (int)$_POST['comment_id'] : 0;
     
-    // Увеличиваем счетчик лайков
+    
     $stmt = $pdo->prepare("UPDATE comments SET likes = likes + 1 WHERE id = ?");
     
     if ($stmt->execute([$comment_id])) {
-        // Получаем новое количество лайков
+        
         $stmt = $pdo->prepare("SELECT likes FROM comments WHERE id = ?");
         $stmt->execute([$comment_id]);
         $likes = $stmt->fetchColumn();
