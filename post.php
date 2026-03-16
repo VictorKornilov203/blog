@@ -31,7 +31,8 @@ $comments = $stmt->fetchAll();
 
 include 'includes/header.php';
 ?>
-
+<main class="container"> 
+                             
 <article class="full-post">
     <h1><?php echo escape($post['title']); ?></h1>
     
@@ -87,5 +88,5 @@ include 'includes/header.php';
         <p class="login-to-comment">Чтобы оставить комментарий, <a href="login.php">войдите</a> в систему.</p>
     <?php endif; ?>
 </section>
-
+</main>
 <?php include 'includes/footer.php'; ?>
