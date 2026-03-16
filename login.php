@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include 'includes/header.php';
 ?>
-
+<main class="container">
 <div class="auth-form">
     <h1>Вход в систему</h1>
     
@@ -57,5 +57,5 @@ include 'includes/header.php';
     
     <p class="auth-link">Нет аккаунта? <a href="register.php">Зарегистрируйтесь</a></p>
 </div>
-
+</main>
 <?php include 'includes/footer.php'; ?>
