@@ -28,7 +28,7 @@ $posts = $stmt->fetchAll();
 
 include 'includes/header.php';
 ?>
-
+<main class="container">
 <h1>Последние посты</h1>
 
 <div class="posts">
@@ -70,5 +70,5 @@ include 'includes/header.php';
         <?php endif; ?>
     </div>
 <?php endif; ?>
-
+</main>
 <?php include 'includes/footer.php'; ?>
