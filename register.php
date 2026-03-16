@@ -41,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include 'includes/header.php';
 ?>
-
+<main class="container">
+    
 <div class="auth-form">
     <h1>Регистрация</h1>
     
@@ -81,5 +82,5 @@ include 'includes/header.php';
     
     <p class="auth-link">Уже есть аккаунт? <a href="login.php">Войдите</a></p>
 </div>
-
+</main>
 <?php include 'includes/footer.php'; ?>
