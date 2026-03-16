@@ -13,7 +13,7 @@ $user = $stmt->fetch();
 
 include 'includes/header.php';
 ?>
-
+<main class="container"> 
 <h1>Профиль пользователя</h1>
 
 <div class="profile-info">
@@ -22,5 +22,5 @@ include 'includes/header.php';
     <p><strong>Дата регистрации:</strong> <?php echo date('d.m.Y', strtotime($user['created_at'])); ?></p>
     <p><strong>Роль:</strong> <?php echo escape($user['role']); ?></p>
 </div>
-
+</main>
 <?php include 'includes/footer.php'; ?>
